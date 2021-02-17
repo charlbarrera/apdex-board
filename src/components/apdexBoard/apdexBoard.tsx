@@ -1,11 +1,11 @@
 import React, { FC, useState } from "react";
-import { useApps } from "../hooks/useApps";
-import { AppObj, CustomModel } from "../interfaces";
+import { useApps } from "../../hooks/useApps";
+import { AppObj, CustomModel } from "../../interfaces";
 import './apdexBoard.css';
-import Modal from "./Modal/modal";
+import Modal from "../modal/modal";
 
 
-const USER = 'averysuperlongemailaddress@companyname.com';
+const USER = 'averylongemailaddress@companyname.com';
 
 /**
  * I chose general names for the components because the app looks like a filter
@@ -77,7 +77,7 @@ export const ApdexBoard = () => {
                 {
                     !loading ?
                         (<CardList data={data} onShowInformation={onShowInformation} />)
-                        : (<div className="loading"></div>)
+                        : (<div className="loading" />)
                 }
             </div>
         </div>

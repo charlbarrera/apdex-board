@@ -1,4 +1,4 @@
-## start local server just
+## start local server:
 ```
 npm install
 ```

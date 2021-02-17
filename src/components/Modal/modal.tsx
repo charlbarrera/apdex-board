@@ -43,7 +43,7 @@ const Modal: React.FC<Props> = (props) => {
                     <div className="modal-footer">
                         <button onClick={props.onClose} className="button">
                             Close
-            </button>
+                        </button>
                     </div>
                 </div>
             </div>

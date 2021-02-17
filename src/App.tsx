@@ -1,6 +1,5 @@
 import React from 'react';
-import './App.css';
-import { ApdexBoard } from './components/apdexBoard';
+import { ApdexBoard } from './components/apdexBoard/apdexBoard';
 
 function App() {
   return (

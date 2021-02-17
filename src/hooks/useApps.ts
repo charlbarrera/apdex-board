@@ -4,26 +4,22 @@ import jsonData from "../data/apps.json";
 
 
 
-const HOST = 'HOST';
+const HOST: string = 'HOST';
 const API_URL: string = 'https://kuupanda.free.beeceptor.com/apps';
 
 export const useApps = ({ criteria }: { criteria: string }): { data: Array<CustomModel>, loading: boolean } => {
-    const [_apps, setApps] = useState<Array<AppObj>>();
     const [data, setData] = useState<Array<CustomModel>>([]);
     const [loading, setLoading] = useState<boolean>(true);
 
     useEffect(() => {
         getApps().then((apps: Array<AppObj>) => {
-            setApps(apps);
+            const data = groupBy(criteria, apps);
+            if (data) setData(data);
         }).catch((err: Error) => {
             console.error(err);
         });
     }, []);
 
-    useEffect(() => {
-        const data = groupBy(criteria);
-        if (data) setData(data);
-    }, [_apps]);
     
     useEffect(() => {
         if (data.length) {
@@ -41,9 +37,9 @@ export const useApps = ({ criteria }: { criteria: string }): { data: Array<Custo
                 return JSON.parse(JSON.stringify(jsonData))
             });
 
-    const groupBy = (criteria: string) => {
-        if (criteria == HOST && _apps) {
-            const data: Array<CustomModel> = createCustomModel(_apps);
+    const groupBy = (criteria: string, apps: Array<AppObj>) => {
+        if (criteria == HOST) {
+            const data: Array<CustomModel> = createCustomModel(apps);
             return data;
         }
     }
@@ -111,8 +107,8 @@ export const useApps = ({ criteria }: { criteria: string }): { data: Array<Custo
 
     const getTopAppsByHost = (hostName: string) => {
         const host = data?.find((g) => g.id == hostName);
-        if (!host) return console.error('host doesnt exists');
-        return host.list.slice(0, 2);
+        if (!host) return console.error("host doesn't exists");
+        return host.list.slice(0, 25);
     }
 
     const addAppToHosts = (app: AppObj) => {

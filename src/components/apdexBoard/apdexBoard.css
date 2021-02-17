@@ -33,7 +33,7 @@
 .info-board {
     display: grid;
     padding: var(--space);
-    grid-template-columns: 228px 1fr 136px;
+    grid-template-columns: 239px 1fr 136px;
     align-items: end;
 }
 
@@ -83,11 +83,14 @@
     color: var(--title-color);
     font-size: 18px;
     font-family: var(--font);
-    margin-left: 5px;
     line-height: 22px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.info-board div:nth-child(3) {
+    margin-left: var(--space);
 }
 
 .loading {
